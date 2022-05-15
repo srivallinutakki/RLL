@@ -1,0 +1,131 @@
+Create Database recipies;
+
+mysql> use recipies;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_recipies |
++--------------------+
+| admin              |
+| recipie            |
+| review             |
+| user               |
++--------------------+
+4 rows in set (0.00 sec)
+
+mysql> desc admin;
++----------+--------------+------+-----+---------+----------------+
+| Field    | Type         | Null | Key | Default | Extra          |
++----------+--------------+------+-----+---------+----------------+
+| id       | int          | NO   | PRI | NULL    | auto_increment |
+| password | varchar(255) | YES  |     | NULL    |                |
+| username | varchar(255) | YES  |     | NULL    |                |
++----------+--------------+------+-----+---------+----------------+
+3 rows in set (0.01 sec)
+
+mysql> desc recipie;
++---------------+--------------+------+-----+---------+----------------+
+| Field         | Type         | Null | Key | Default | Extra          |
++---------------+--------------+------+-----+---------+----------------+
+| id            | int          | NO   | PRI | NULL    | auto_increment |
+| cooking_steps | longtext     | YES  |     | NULL    |                |
+| category      | varchar(255) | YES  |     | NULL    |                |
+| imgurl        | varchar(255) | YES  |     | NULL    |                |
+| ingrediants   | varchar(255) | YES  |     | NULL    |                |
+| name          | varchar(255) | YES  |     | NULL    |                |
++---------------+--------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> desc user;
++----------+--------------+------+-----+---------+----------------+
+| Field    | Type         | Null | Key | Default | Extra          |
++----------+--------------+------+-----+---------+----------------+
+| id       | int          | NO   | PRI | NULL    | auto_increment |
+| email    | varchar(255) | YES  |     | NULL    |                |
+| name     | varchar(255) | YES  |     | NULL    |                |
+| password | varchar(255) | YES  |     | NULL    |                |
+| phone    | bigint       | YES  |     | NULL    |                |
++----------+--------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
+
+mysql> desc review;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| id          | int          | NO   | PRI | NULL    | auto_increment |
+| recipiename | varchar(255) | YES  |     | NULL    |                |
+| rating      | int          | NO   |     | NULL    |                |
+| review      | varchar(255) | YES  |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+4 rows in set (0.03 sec)
+--
+
+mysql> select * from admin;
++----+----------+-----------------+
+| id | password | username        |
++----+----------+-----------------+
+|  1 | sri|     | sri@gmail.com |
+|  2 | abc123   | abc@gmail.com |
++----+----------+-----------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from user;
++----+-----------------+-------+----------+------------+
+| id | email           | name  | password | phone      |
++----+-----------------+-------+----------+------------+
+|  1 | sri@gmail.com   | sri   | 12345    | 1234567890 |
+|  2 | abc@gmail.com   | abc   | 67890    | 9876543210 |
++----+-----------------+-------+----------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from recipie;
+[
+{
+        "id": 1,
+        "name": "Butter-Chicken",
+        "ingrediants": "chicken_spices_tomatoes_cream",
+        "imgurl": "https://i.ibb.co/zXW6Xtb/butter-chicken.jpg",
+        "category": "Non-veg",
+        "cookingSteps": "Heat a pan with butter & saute cinnamon, cloves and cardamoms for a min.Add ginger garlic paste, green chilies and fry till it turns fragrant.Next pour the tomato cashew puree.Add red chili powder, sugar and salt.Mix and cook until the tomato puree becomes thick."
+    },
+    {
+        "id": 2,
+        "name": "Puran-Poli",
+        "ingrediants": "Flour_chana dal_jaggery",
+        "imgurl": "https://static.toiimg.com/thumb/55045560.cms?imgsize=252832&width=800&height=800",
+        "category": "Veg",
+        "cookingSteps": "Prepare the filling for Puran Poli Put a saucepan over medium flame and add ghee to it. Once the ghee is melted, add blanched dal in it. Roast for 2-3 minutes and then add jaggery, ginger powder, cardamom powder, fennel powder and nutmeg powder into it. Mix all the ingredients and cook the dal for another 2-3 minutes. Once done, turn off the flame and let it cool. Then mash the dal using a masher. Knead the dough.In a dough kneading plate, add all-purpose flour, turmeric, salt to taste and refined oil. Mix well and then add a little water at a time and knead to make a stiff dough. Divide the dough into 3 parts and keep it aside."
+    },
+    {
+        "id": 4,
+        "name": "Palak-Paneer",
+        "ingrediants": "spinachpuree_tomato_onion_ginger_garlic",
+        "imgurl": "https://i.ibb.co/L5cKZ13/palakpanner.jpg",
+        "category": "Veg",
+        "cookingSteps": "The curry is made of the spinach puree, tomato, onion, ginger and garlic. I use lot of garlic because in my opinion spinach and garlic go really well together.\nHowever, if you are not a fan, you may cut down on it or skip it altogether. Also, you can skip the tomatoes if you want.  It will still come out great!\n\nI often use my homemade paneer for this palak paneer recipe. It’s really the best.\nHowever, if you use store bought paneer, just remember to soak it in hot water for 15 to 20 minutes and then use in the recipe."
+    },
+    {
+        "id": 5,
+        "name": "Chicken-Biriyani",
+        "ingrediants": "Chicken_Rice_Masala_Onion_Tamato",
+        "imgurl": "https://static.toiimg.com/thumb/53096628.cms?imgsize=104874&width=800&height=800",
+        "category": "Non-Veg",
+        "cookingSteps": "Heat a heavy-bottomed pan with a tight-fitting lid on medium-low.\nCover the bottom of the pan with water or stock.\nPlace the biryani in the heated pan and cover with a lid.\nOn medium-low heat, steam for 5-6 minutes.\nStir occasionally to distribute the heat evenly."
+    },
+    {
+        "id": 6,
+        "name": "MasalaDosa",
+        "ingrediants": "rice_black gram_,smooth-batter-with-a-dash-of-salt,_then-fermented",
+        "imgurl": "https://www.palatesdesire.com/wp-content/uploads/2019/09/Mysore_Masala_Dosa@Palates_Desire-e1593275925544-scaled.jpg",
+        "category": "Veg",
+        "cookingSteps": "Ferment Your Batter Well. \nAdd A Pinch Of Sugar To The Batter. \nUse Lentils In Your Dosa Batter. \nUse The Best Cast-Iron Tawa. \nSeason Your Pan With Some Oil Or Ghee. \nSpread The Batter Evenly On Pan's Surface. \nCover It With A Lid After You Spread It On The Pan."
+    },
+    {
+        "id": 7,
+        "name": "Fish_fry",
+        "ingrediants": "Clean-the-fish-pieces_Marinate-the-fish_Deep-fry-it-to-perfection_ Serve-Fish-Fry-hot",
+        "imgurl": "https://i0.wp.com/hattyfoods.com/wp-content/uploads/2021/04/Restaurant-style-fish-fry-recipe.jpg?fit=2400%2C1600&ssl=1",
+        "category": "Non-Veg",
+        "cookingSteps": "Step 1: Choose the Right Fish. \nStep 2: Season the Fillets. \nStep 3: Dip the Fillets in Flour, Egg, and Breadcrumbs. \nStep 4: Place the Fillets in the Fridge.\nStep 5: Choosing the Right Frying Pan. \nStep 6: Picking the Right Cooking Oil. \nStep 7: Flip the Fried Fish.\nStep 8: Place the Fried Fish on a Drying Rack."
+    }
+]
